@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'lib/factories/PokemonFactory.dart';
-import 'lib/models/Pokemon.dart';
+import './factories/PokemonFactory.dart';
+import './models/Pokemon.dart';
 
 
 void main() {

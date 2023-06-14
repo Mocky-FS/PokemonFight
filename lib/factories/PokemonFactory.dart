@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import '../models/Pokemon.dart';
+
 class PokemonFactory {
   static Pokemon creerPokemon(String nom) {
     final random = Random();
