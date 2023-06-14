@@ -1,74 +1,9 @@
 import 'dart:io';
 import 'dart:math';
 
-class Pokemon {
-  final String nom;
-  int pv;
-  final int atk;
-  final int atkSpe;
-  final int def;
-  final int defSpe;
-  final int vit;
+import 'lib/factories/PokemonFactory.dart';
+import 'lib/models/Pokemon.dart';
 
-  Pokemon({
-    required this.nom,
-    required this.pv,
-    required this.atk,
-    required this.atkSpe,
-    required this.def,
-    required this.defSpe,
-    required this.vit,
-  });
-
-  // Afficher les infos du Pokémon
-  void afficherInfos() {
-    print('Nom: $nom');
-    print('PV: $pv');
-    print('Attaque: $atk');
-    print('Attaque Spéciale: $atkSpe');
-    print('Défense: $def');
-    print('Défense Spéciale: $defSpe');
-    print('Vitesse: $vit');
-  }
-
-  int attaquePhysique() {
-    int degats = (20 + atk) - def;
-    if (def > atk) {
-      degats = 1;
-    }
-    return degats;
-  }
-
-  int attaqueSpeciale() {
-    int degats = (20 + atkSpe) - defSpe;
-    if (defSpe > atkSpe) {
-      degats = 1;
-    }
-    return degats;
-  }
-}
-
-class PokemonFactory {
-  static Pokemon creerPokemon(String nom) {
-    final random = Random();
-    final pv = 200;
-    final atk = random.nextInt(20) + 1;
-    final atkSpe = random.nextInt(20) + 1;
-    final def = random.nextInt(20) + 1;
-    final defSpe = random.nextInt(20) + 1;
-    final vit = random.nextInt(20) + 1;
-
-    return Pokemon(
-      nom: nom,
-      pv: pv,
-      atk: atk,
-      atkSpe: atkSpe,
-      def: def,
-      defSpe: defSpe,
-      vit: vit,
-    );
-  }
-}
 
 void main() {
   Pokemon monPokemon = PokemonFactory.creerPokemon("Magikarp");
