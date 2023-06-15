@@ -1,3 +1,7 @@
 name: PokeFight
 description: Un projet de simulation de combat Pokémon
 version: 1.0.0
+dependencies:
+  http: ^0.13.3
+environment:
+  sdk: "^2.12.0"

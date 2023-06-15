@@ -4,7 +4,7 @@ import 'dart:math';
 import './factories/PokemonFactory.dart';
 import './models/Pokemon.dart';
 
-
+/*
 void main() {
   Pokemon monPokemon = PokemonFactory.creerPokemon("Magikarp");
   Pokemon ennemiPokemon = PokemonFactory.creerPokemon("Dracaufeu");
@@ -59,3 +59,6 @@ void main() {
     print('Il vous reste ${monPokemon.pv} HP restant.');
   }
 }
+*/
+
+

@@ -1,25 +1,38 @@
-import 'dart:math';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 
 import '../models/Pokemon.dart';
 
 class PokemonFactory {
-  static Pokemon creerPokemon(String nom) {
-    final random = Random();
-    final pv = 200;
-    final atk = random.nextInt(20) + 1;
-    final atkSpe = random.nextInt(20) + 1;
-    final def = random.nextInt(20) + 1;
-    final defSpe = random.nextInt(20) + 1;
-    final vit = random.nextInt(20) + 1;
+  final String baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
+
+  Future<Pokemon> getPokemon(int id) async {
+    final response = await http.get(Uri.parse('$baseUrl$id'));
+    final data = json.decode(response.body);
+
+    var types = <String>[];
+    var moves = <String>[];
+    var stats = <String, int>{};
+
+    data['types'].forEach((type) {
+      types.add(type['type']['name']);
+    });
+
+    data['moves'].forEach((move) {
+      moves.add(move['move']['name']);
+    });
+
+    data['stats'].forEach((stat) {
+      stats[stat['stat']['name']] = stat['baseStat'];
+    });
 
     return Pokemon(
-      nom: nom,
-      pv: pv,
-      atk: atk,
-      atkSpe: atkSpe,
-      def: def,
-      defSpe: defSpe,
-      vit: vit,
+      id: data['id'],
+      name: data['name'],
+      types: types,
+      moves: moves,
+      stats: stats,
     );
   }
 }
