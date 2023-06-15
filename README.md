@@ -11,9 +11,9 @@ PokéDart est une application Web qui vous permet de capturer des Pokémon et de
 Fournissez des instructions détaillées sur la façon de télécharger, installer et exécuter l'application. Incluez également des informations sur la configuration nécessaire pour faire fonctionner l'application. Par exemple:
 Prérequis
 
-* Dart SDK installé
-* Flutter installé
-* Connexion à Internet
+- Dart SDK installé
+- Flutter installé
+- Connexion à Internet
 
 ## Instructions
 
@@ -22,13 +22,21 @@ Prérequis
 3. Exécutez pub get pour installer les dépendances
 4. Exécutez flutter run pour lancer l'application
 
-## Fonctionnalités
+## Fonctionnalités futures
 
-Utilisez cette section pour décrire les différentes fonctionnalités disponibles dans votre application. Par exemple:
-
-* Capturer & échanger des Pokémon
-* Combattre des adversaires PvE
-* Combattre des joueurs PvP
+1. Création d’équipe pokémon :
+   - Choix des pokémons (dans la limite de 6)
+   - Choix des attaques disponibles pour le pokémon (dans la limite de 4)
+   - (Choix des objets pour plus tard)
+2. Checkout sur les attaques et les calculs de dommages des coups critiques etc…
+3. Création d’un compte utilisateur en s’enregistrant
+4. Stocker les données dans une base de données (ou sqlite) pour pas perdre son compte user et ses teams pokémons
+5. Création d’une interface graphic terminal pour pouvoir afficher l’interface de combat
+6. Maintenir le code et essayer de créer de la protection dans le code contre les mauvaises surprises (cheat etc…)
+7. Création du système de combat comme Smogon avec :
+   - Team preview
+   - Choix du pokémon qu’on envoie en premier sur le terrain
+   - Un timer pendant le combat
 
 Structure du code
 
