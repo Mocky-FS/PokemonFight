@@ -23,20 +23,20 @@ Prérequis
 4. Exécutez flutter run pour lancer l'application
 
 ## Fonctionnalités futures
-
-1. Création d’équipe pokémon :
+1. Création d’un compte utilisateur en s’enregistrant
+2. Stocker les données dans une base de données (ou sqlite) pour pas perdre son compte user et ses teams pokémons
+3. Création d’une interface graphic terminal pour pouvoir afficher l’interface de combat
+4. Création d’équipe pokémon :
    - Choix des pokémons (dans la limite de 6)
    - Choix des attaques disponibles pour le pokémon (dans la limite de 4)
    - (Choix des objets pour plus tard)
-2. Checkout sur les attaques et les calculs de dommages des coups critiques etc…
-3. Création d’un compte utilisateur en s’enregistrant
-4. Stocker les données dans une base de données (ou sqlite) pour pas perdre son compte user et ses teams pokémons
-5. Création d’une interface graphic terminal pour pouvoir afficher l’interface de combat
-6. Maintenir le code et essayer de créer de la protection dans le code contre les mauvaises surprises (cheat etc…)
-7. Création du système de combat comme Smogon avec :
+5. Création du système de combat comme Smogon avec :
    - Team preview
    - Choix du pokémon qu’on envoie en premier sur le terrain
    - Un timer pendant le combat
+6. Checkout sur les attaques et les calculs de dommages des coups critiques etc…
+7. Maintenir le code et essayer de créer de la protection dans le code contre les mauvaises surprises (cheat etc…)
+
 
 Structure du code
 

@@ -1,8 +1,4 @@
-// Ce code a pour but de tester l'API plus profondemment en récupérant sur le terminal, les infos du pokémon.
-// Nous devons insérer l'ID du pokémon et ça nous retourne son ID, son nom, son ou ses types, ses moves et ses stats.
-
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 
 Future<void> main() async {
@@ -31,7 +27,6 @@ Future<String> getPokemonInfo(String pokemonId) async {
     final stats = <String, int>{};
     for (final statData in pokemonData['stats']) {
       final name = _capitalizeFirstLetter(statData['stat']['name'].toString());
-      //final name = statData['stats']['name'].toString().capitalize();
       final value = statData['base_stat'] as int;
       stats[name] = value;
     }
@@ -39,23 +34,29 @@ Future<String> getPokemonInfo(String pokemonId) async {
       for (final moveData in pokemonData['moves'])
         _capitalizeFirstLetter(moveData['move']['name'].toString())
     ];
-    moves.sort((a, b) {
-      // trier par ordre croissant (level) , les attaques du pokémon.
-      final aDetails = pokemonData['moves']
-          .where((move) => move['move']['name'] == a)
-          .map((move) => move['version_group_details'])
+
+    // Définir la fonction `compareMoves` et `getMoveDetails`
+    List<dynamic> getMoveDetails(String move, List<dynamic> moves) {
+      return moves
+          .where((moveData) => moveData['move']['name'] == move)
+          .map((moveData) => moveData['version_group_details'])
           .toList();
-      final bDetails = pokemonData['moves']
-          .where((move) => move['move']['name'] == b)
-          .map((move) => move['version_group_details'])
-          .toList();
+    }
+
+    int compareMoves(String a, String b, List<dynamic> moves) {
+      final aDetails = getMoveDetails(a, moves);
+      final bDetails = getMoveDetails(b, moves);
 
       final aLevel =
-          aDetails.isNotEmpty ? aDetails[0][0]['level_learned_at'] as int : 0;
+          aDetails.isNotEmpty ? aDetails[0]['level_learned_at'] as int : 0;
       final bLevel =
-          bDetails.isNotEmpty ? bDetails[0][0]['level_learned_at'] as int : 0;
+          bDetails.isNotEmpty ? bDetails[0]['level_learned_at'] as int : 0;
+
       return aLevel - bLevel;
-    });
+    }
+
+    // Trier les attaques du Pokemon par ordre croissant de niveau d'apprentissage
+    moves.sort((a, b) => compareMoves(a, b, pokemonData['moves']));
 
     // Créer la fiche Pokémon
     final buffer = StringBuffer()
@@ -68,7 +69,10 @@ Future<String> getPokemonInfo(String pokemonId) async {
     }
     buffer.writeln('Moves:');
     for (final move in moves) {
-      buffer.writeln('- $move');
+      final details = getMoveDetails(move, pokemonData['moves']);
+      final level =
+          details.isNotEmpty ? details[0][0]['level_learned_at'] as int : 0;
+      buffer.writeln('- ${move} (Level: ${level})');
     }
     return buffer.toString();
   } else {
