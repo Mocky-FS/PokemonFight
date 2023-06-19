@@ -32,8 +32,7 @@ PokéDart est une application Web qui vous permet de capturer des Pokémon et de
 6. Checkout sur les attaques et les calculs de dommages des coups critiques etc…
 7. Maintenir le code et essayer de créer de la protection dans le code contre les mauvaises surprises (cheat etc…)
 
-
-Structure du code
+## Structure du code
 
 Le projet PokéDart est organisé en différents fichiers et dossiers selon l'architecture MVC. Le dossier lib contient tous les fichiers nécessaires au fonctionnement de l'application, tels que les contrôleurs, les vues et les modèles. Les fichiers concernant chaque fonctionnalité sont regroupés dans des dossiers distincts, pour une organisation optimale.
 Contribuer
